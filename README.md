@@ -2,27 +2,26 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [Ai Toll plaza] 🎯
 
 ## Basic Details
 
 ### Team Name: [Name]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [Sivani Ram] - [Sree Narayana Guru Engineering College]
 
 ### Hosted Project Link
 [mention your project hosted link here]
 
 ### Project Description
-[2-3 lines about what your project does]
+[Kerala Smart Toll System: An intuitive digital platform integrating FASTag, UPI, and cash payments with real-time balance management and traditional Kerala-inspired design for efficient, contactless toll processing. ]
 
 ### The Problem statement
-[What problem are you solving?]
+[Manual toll collection in Kerala causes delays, congestion, and payment inefficiencies. A digital, multi-payment system is needed to streamline tolls, support residents, and enable fast, contactless transactions.]
 
 ### The Solution
-[How are you solving it?]
+[The solution is a Kerala-themed smart toll system integrating FASTag, UPI, and cash payments for seamless, quick transactions. It offers real-time balance updates and digital receipts to reduce congestion and improve user convenience.]
 
 ---
 
@@ -31,25 +30,41 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [HTML, CSS, JavaScript]
+- Frameworks used: [None (pure front-end implementation)]
+- Libraries used: [None (Vanilla JS; optional: can use jQuery for enhancements)]
+- Tools used: [VS Code, Google Chrome (for testing), Git]
 
 **For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- Main components: [RFID/FASTag reader (for real implementation)
+
+Payment device (UPI-enabled terminal / cash counter)
+
+Barrier/gate automation (servo or motor controller)
+
+Computer or microcontroller to run software]
+- Specifications: [FASTag reader: ISO 18000-63 compliant RFID
+
+Payment terminal: supports UPI and NFC transactions
+
+Gate: 12V DC motor with controller
+
+Microcontroller: Arduino/ESP32/Raspberry Pi (if automated)]
+- Tools required: [Screwdriver, soldering kit (for hardware setup)
+
+USB cables for microcontroller connection
+
+Network access for FASTag/UPI payment integration]
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [Automated Vehicle Identification: Instantly identifies vehicle type and resident status.]
+- Feature 2: [Multi-Payment Support: Accepts FASTag, UPI, and cash payments.]
+- Feature 3: [Digital Receipts: Generates instant receipts with balance or change details.]
+- Feature 4: [Kerala-Themed Interface: Traditional colors, boat icon, and aesthetic layout for cultural integration.]
 
 ---
 
@@ -70,10 +85,38 @@ List the key features of your project:
 ### For Hardware:
 
 #### Components Required
-[List all components needed with specifications]
+[RFID/FASTag Reader – ISO 18000-63 compliant, for vehicle identification
+
+Microcontroller – Arduino Uno / ESP32 / Raspberry Pi (to process data and control gate)
+
+Gate/Barrier Motor – 12V DC motor with motor driver module (L298N or similar)
+
+Payment Terminal – UPI/NFC-enabled device for digital payments
+
+Buzzer/LED Indicators – Optional, for transaction success/failure alerts
+
+Power Supply – 12V DC for motor and 5V for microcontroller and peripherals
+
+Connecting Wires & Breadboard – For prototyping connections]
 
 #### Circuit Setup
-[Explain how to set up the circuit]
+[Microcontroller Setup: Connect the microcontroller to a power source (USB or adapter).
+
+RFID/FASTag Reader: Connect the reader’s TX/RX pins to microcontroller serial pins. This allows the system to read vehicle tags.
+
+Gate Motor: Connect the DC motor to the motor driver module, and then connect the motor driver control pins to the microcontroller digital pins. This allows automated gate opening/closing.
+
+Indicators: Connect LEDs or buzzer to separate digital pins for payment success/failure signals.
+
+Payment Terminal: Connect via Wi-Fi or Bluetooth (if digital) to microcontroller or computer interface for transaction verification.
+
+Power Management: Ensure proper voltage levels for each component (use voltage regulators if necessary) and common ground connections for all circuits.
+
+Testing: Power on the system, test RFID reading, simulate payments, and verify the gate responds correctly.
+
+If you want, I can also draw a simple schematic diagram showing the connections between RFID, motor, microcontroller, and payment terminal — perfect for your documentation.
+
+Do you want me to create that diagram?]
 
 ---
 
