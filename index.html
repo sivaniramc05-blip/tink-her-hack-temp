@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kerala Smart Toll System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8e1; /* warm traditional background */
+            text-align: center;
+        }
+        .container {
+            background: white;
+            width: 420px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            border: 4px solid #c62828; /* Kerala red border */
+        }
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid #2e7d32; /* Kerala green */
+        }
+        h2 {
+            color: #c62828;
+            font-family: "Georgia", serif;
+            margin-bottom: 20px;
+        }
+        select, input {
+            padding: 8px;
+            margin: 5px;
+            width: 80%;
+            border: 2px solid #2e7d32;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+        .receipt {
+            background: #f1f1f1;
+            padding: 12px;
+            margin-top: 15px;
+            border: 3px dashed #c62828;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Updated Kerala Icon with beige background -->
+    <img src="ima.jpg" alt="Kerala Icon" class="logo">
+
+    <h2>Kerala Smart AI Toll System</h2>
+
+    <label>Select Vehicle:</label><br>
+    <select id="vehicle">
+        <option value="60">Car - ₹60</option>
+        <option value="120">Bus - ₹120</option>
+        <option value="150">Truck - ₹150</option>
+        <option value="30">Bike - ₹30</option>
+    </select>
+
+    <br>
+
+    <label>
+        <input type="checkbox" id="resident">
+        Local Resident (₹330 Monthly Pass)
+    </label>
+
+    <br>
+
+    <input type="number" id="balance" placeholder="Enter FASTag Balance">
+
+    <br>
+
+    <button onclick="processFastag()">Pay via FASTag</button>
+    <button onclick="processUPI()">Pay via UPI (1.25x)</button>
+    <button onclick="processCash()">Pay via Cash</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+function getFinalAmount() {
+    let vehicleAmount = parseFloat(document.getElementById("vehicle").value);
+    let isResident = document.getElementById("resident").checked;
+
+    if (isResident) {
+        return 330;
+    } else {
+        return vehicleAmount;
+    }
+}
+
+function generateReceipt(vehicle, amount, mode) {
+    return `
+        <div class="receipt">
+        <h3>🌿 DIGITAL RECEIPT 🌿</h3>
+        Vehicle: ${vehicle}<br>
+        Amount Paid: ₹${amount.toFixed(2)}<br>
+        Payment Mode: ${mode}<br>
+        Status: ✅ SUCCESS<br>
+        Gate Opened 🚦
+        </div>
+    `;
+}
+
+function processFastag() {
+    let balance = parseFloat(document.getElementById("balance").value);
+    let amount = getFinalAmount();
+    let vehicle = document.getElementById("vehicle").selectedOptions[0].text;
+
+    if (balance >= amount) {
+        let newBalance = balance - amount;
+        document.getElementById("output").innerHTML =
+            generateReceipt(vehicle, amount, "FASTag") +
+            `<p>Remaining FASTag Balance: ₹${newBalance.toFixed(2)}</p>`;
+    } else {
+        document.getElementById("output").innerHTML =
+            "<p style='color:red;'>Insufficient FASTag Balance!</p>";
+    }
+}
+
+function processUPI() {
+    let amount = getFinalAmount() * 1.25;
+    let vehicle = document.getElementById("vehicle").selectedOptions[0].text;
+
+    document.getElementById("output").innerHTML =
+        generateReceipt(vehicle, amount, "UPI");
+}
+
+function processCash() {
+    let cash = prompt("Insert Cash Amount:");
+    let amount = getFinalAmount();
+    let vehicle = document.getElementById("vehicle").selectedOptions[0].text;
+
+    if (parseFloat(cash) >= amount) {
+        document.getElementById("output").innerHTML =
+            generateReceipt(vehicle, amount, "Cash");
+    } else {
+        document.getElementById("output").innerHTML =
+            "<p style='color:red;'>Insufficient Cash! Gate Closed.</p>";
+    }
+}
+</script>
+
+</body>
+</html>
+
